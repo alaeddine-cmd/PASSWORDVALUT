@@ -1,5 +1,11 @@
-import "./App.css";
 import React, { useState } from "react";
+import { TextField, Button } from "@material-ui/core";
+import "./App.css";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faEnvelope, faKey);
 
 function App() {
   const [password, setPassword] = useState("");
@@ -37,17 +43,22 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Set New Password</h1>
+      <h1 style={{ marginTop: "80px" }}>Set New Password   <FontAwesomeIcon
+        icon="key"
+      /></h1>
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
+          variant="outlined"
+          label="New Password"
           type="password"
-          placeholder="New Password...."
           value={password}
           onChange={handlePasswordChange}
         />
         <br />
         <br />
-        <button type="submit">Confirm</button>
+        <Button variant="contained" color="primary" type="submit" style={{fontFamily: 'Pacifico',  textTransform: 'none'}}>
+          Save
+        </Button>
       </form>
     </div>
   );
